@@ -6,6 +6,9 @@
 
 int main(void)
 {
+    //before calling the fork method
+    printf("Child PID: %d, Parent PID: %d\n", getpid(), getppid());
+
     pid_t pid;
     /* Output from both the child and the parent process
     * will be written to the standard output 

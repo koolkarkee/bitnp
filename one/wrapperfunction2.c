@@ -16,8 +16,9 @@ int Socket(int family, int type, int protocol){
 int main(){
     //Using common values for IPv4 TCP socket
     int sockfd = Socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-    printf("Socket created successfully: %d\n", sockfd);
-
+    
+    if(sockfd > -1)
+        printf("Socket created successfully: %d\n", sockfd);
+    
     return 0;
 }
