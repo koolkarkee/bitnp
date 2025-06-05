@@ -7,12 +7,12 @@ int Execl(const char *__path, const char *_arg, ...){
     int result = execl(__path, _arg, (char *)0);
     if(result == -1)
     {
-        perror("execl failed");
+        perror("execl failed - ");
     }
 }
 
 int main(){        
-    Execl("/home/koolkarkee/bitnp/three/mybashscript.sh", "mybashscript.sh", (char *)0);
+    Execl("/home/koolkarkee/bitnp/two/mybashscript.sh", "mybashscript.sh", (char *)0);
 
     return 0;
 }
