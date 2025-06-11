@@ -27,7 +27,7 @@ int main(){
     else if(pid == 0){ //child process 
         printf("\nSending message from child - Child PID: %d, Parent PID: %d\n", getpid(), getppid());
 
-        char message[] = "hello from child";
+        char message[] = "hello from child process";
         write(fd[1], message, strlen(message));
 
         close(fd[0]); // Close read end in child

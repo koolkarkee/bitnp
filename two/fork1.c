@@ -6,7 +6,7 @@
 
 int main(void)
 {
-    //before calling the fork method
+    //before calling the fork method //200, 100
     printf("Child PID: %d, Parent PID: %d\n", getpid(), getppid());
 
     pid_t pid;
@@ -33,10 +33,10 @@ int main(void)
         * the child process.
         */
 
+        //300, 200 is the creator
         printf("Child PID: %d, Parent PID: %d\n", getpid(), getppid());
         _exit(0); /* Note that we do not use exit() */
-    }
-
+    } 
     else
     {
         /* When fork() returns a positive number, we are in the parent process
