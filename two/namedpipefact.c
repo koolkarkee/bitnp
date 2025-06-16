@@ -8,6 +8,14 @@
 #define FIFO_NAME "myfifo"
 #define MESSAGE "Hello from child process!"
 
+int fact(int n){
+    if(n <= 1){
+        return 1;
+    }
+
+    return n * fact(n-1);
+}
+
 int main() {
     int fd;
     pid_t pid;
@@ -27,7 +35,16 @@ int main() {
     //child process
     if (pid == 0) {
         fd = open(FIFO_NAME, O_WRONLY);
-        write(fd, MESSAGE, sizeof(MESSAGE));
+
+        //enter the number
+        int number;
+        printf("\nEnter the number : \n");
+        scanf("%d", &number);
+
+        //caculate the factorial
+        int result = fact(number);
+
+        write(fd, &result, sizeof(result));
         close(fd);
         printf("Child: Message sent to parent.\n");
     } 
@@ -36,10 +53,12 @@ int main() {
     else {
         sleep(1); // Ensure child writes first
         fd = open(FIFO_NAME, O_RDONLY);
-        char buffer[100];
-        read(fd, buffer, sizeof(buffer));
+
+        int receivedResult;
+        read(fd, &receivedResult, sizeof(receivedResult));
         close(fd);
-        printf("Parent: Received message - %s\n", buffer);
+
+        printf("\nParent: The factorial is - %d\n", receivedResult);
 
         // Cleanup
         unlink(FIFO_NAME);
