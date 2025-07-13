@@ -36,7 +36,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    printf("🔄 UDP Echo Server is running on port %d...\n", PORT);
+    printf("UDP Echo Server is running on port %d...\n", PORT);
 
     // Server runs in infinite loop, echoing messages back
     while (1) {
@@ -44,7 +44,7 @@ int main() {
         // Receive message from client
         int n = recvfrom(sockfd, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&cliaddr, &len);
         buffer[n] = '\0'; // Null-terminate the received message
-        printf("📨 Received: %s\n", buffer);
+        printf("Received: %s\n", buffer);
 
         // Send same message back to client
         sendto(sockfd, buffer, n, 0, (const struct sockaddr *)&cliaddr, len);

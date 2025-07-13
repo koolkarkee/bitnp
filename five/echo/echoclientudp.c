@@ -27,7 +27,7 @@ int main() {
     servaddr.sin_port = htons(PORT);              // Port
     servaddr.sin_addr.s_addr = INADDR_ANY;        // Localhost (use server IP if remote)
 
-    printf("💬 UDP Echo Client started. Type messages to send...\n");
+    printf("UDP Echo Client started. Type messages to send...\n");
 
     while (1) {
         // Prompt user for input
@@ -45,7 +45,7 @@ int main() {
         buffer[n] = '\0'; // Null-terminate echoed message
 
         // Display echoed message
-        printf("🔁 Echoed back: %s\n", buffer);
+        printf("Echoed back: %s\n", buffer);
     }
 
     // Close socket (never reached in this loop)
