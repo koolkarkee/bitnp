@@ -24,11 +24,12 @@ int main() {
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;                // Use IPv4
     server_addr.sin_port = htons(SERVER_PORT);       // Convert port to network byte order
-    if (inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr) <= 0) {  // Convert IP address from text to binary
-        perror("Invalid IP address");
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
+    // if (inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr) <= 0) {  // Convert IP address from text to binary
+    //     perror("Invalid IP address");
+    //     close(sockfd);
+    //     exit(EXIT_FAILURE);
+    // }
+    server_addr.sin_addr.s_addr = inet_addr(SERVER_IP);
 
     // Connect to the server
     if (connect(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr)) == -1) {

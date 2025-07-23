@@ -24,6 +24,8 @@ int main() {
 
     // Set up the server address structure
     memset(&server_addr, 0, sizeof(server_addr));           // Clear the memory
+    
+    //fill in the values
     server_addr.sin_family = AF_INET;                       // Use IPv4
     server_addr.sin_port = htons(PORT);                     // Convert port number to network byte order
     server_addr.sin_addr.s_addr = INADDR_ANY;               // Accept connections from any local IP
