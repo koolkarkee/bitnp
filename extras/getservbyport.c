@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 
 int main() {
-    int port_number = 80;  // Try changing to 21, 22, 53, etc.
+    int port_number = 22;  // Try changing to 21, 22, 53, etc.
     const char *protocol = "tcp";
 
     // Convert port to network byte order
